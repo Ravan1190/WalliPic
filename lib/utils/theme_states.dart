@@ -9,3 +9,12 @@ class ThemeState extends ChangeNotifier{
     ThemeMode.system,
   ];
 }
+
+// Provides change notification to its listeners.
+class PageState extends ChangeNotifier{
+  int currentPage = 0;
+  changePage(index){
+    currentPage = index;
+    notifyListeners();
+  }
+}

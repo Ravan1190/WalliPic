@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:provider/provider.dart';
+import 'package:walli_pic/utils/theme_states.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -36,6 +37,25 @@ class _MyAppState extends State<MyApp> {
           final themeState = Provider.of<ThemeState>(context);
           final pageState = Provider.of<PageState>(context);
           themeState.getTheme();
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            //this prevent app from closing on pressing back button unless we are on homepage.
+            home: WillPopScope(
+                onWillPop: () async {
+                  if (pageState.currentPage != 0) {
+                    pageState.changePage(0);
+                    controller.jumpTo(0);
+                    return false;
+                  } else
+                    return true;
+                },
+              child: Scaffold(
+                body: PageView(
+
+                ),
+              ),
+            ),
+          );
       },
     );
   }
