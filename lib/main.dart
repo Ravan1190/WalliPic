@@ -26,6 +26,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    // MultiProvider use to improve readability and reduce boilerplate code.
     return MultiProvider(
         providers: [
           ChangeNotifierProvider(create: (context) => ThemeState()),
