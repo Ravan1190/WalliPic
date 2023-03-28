@@ -8,6 +8,13 @@ class ThemeState extends ChangeNotifier{
     ThemeMode.dark,
     ThemeMode.system,
   ];
+  void getTheme() async {
+    currentThemeIndex = await PrefManager().getThemeIndex();
+    currentThemeMode = _themeModes[currentThemeIndex];
+    currentAccentIndex = await PrefManager().getAccentIndex();
+    currentAccent = accentColors[currentAccentIndex];
+    notifyListeners();
+  }
 }
 
 // Provides change notification to its listeners.
