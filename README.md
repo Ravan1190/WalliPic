@@ -1,4 +1,4 @@
-# walli_pic
+# WalliPic
 
 ## Description
 WalliPic is a wallpaper app for android made with flutter and using Unsplash api. You can download and save wallpapers locally or set as wallpaper directly from the app.
