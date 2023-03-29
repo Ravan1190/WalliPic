@@ -28,7 +28,7 @@ class _MyAppState extends State<MyApp> {
 
   // No. of pages
   List<Widget> pages = [
-    HomePage(),
+    const HomePage(),
   ];
 
   @override
