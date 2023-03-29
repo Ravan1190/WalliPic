@@ -15,6 +15,30 @@ class ThemeState extends ChangeNotifier{
     currentAccent = accentColors[currentAccentIndex];
     notifyListeners();
   }
+
+  // To change theme mode
+  changeThemeMode(index) {
+    currentThemeMode = _themeModes[index];
+    currentThemeIndex = index;
+    notifyListeners();
+    PrefManager().saveThemeIndex(index);
+  }
+
+  // change to dark
+  ThemeData getDarkTheme() {
+    return ThemeData(
+      useMaterial3: true,
+      brightness: Brightness.dark,
+      colorScheme: currentAccent,
+    );
+  }
+
+  // change to light
+  ThemeData getLightTheme() {
+    return ThemeData(
+      useMaterial3: true,
+      colorSchemeSeed: currentAccent,
+    );
 }
 
 // Provides change notification to its listeners.
