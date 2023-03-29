@@ -6,8 +6,12 @@ class HomePage extends StatefulWidget {
   @override
   State<HomePage> createState() => _HomePageState();
 }
+// A mixin with convenience methods for clients of AutomaticKeepAlive.
+// which allows subtrees to request to be kept alive in lazy list.
+class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin {
+  @override
+  bool get wantKeepAlive => true;
 
-class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
