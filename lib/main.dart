@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:provider/provider.dart';
+import 'package:walli_pic/screens/homepage.dart';
 import 'package:walli_pic/utils/theme_states.dart';
 
 void main() async {
@@ -24,6 +25,11 @@ class _MyAppState extends State<MyApp> {
     controller.dispose();
     super.dispose();
   }
+
+  // No. of pages
+  List<Widget> pages = [
+    HomePage(),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -53,11 +59,11 @@ class _MyAppState extends State<MyApp> {
               child: Scaffold(
                 body: PageView(
                   physics: const BouncingScrollPhysics(),
-                  children: pages,
                   controller: controller,
                   onPageChanged: (index) {
                     pageState.changePage(index);
                   },
+                  children: pages,
                 ),
                 bottomNavigationBar: BottomNavBar(pageController: controller),
               ),
