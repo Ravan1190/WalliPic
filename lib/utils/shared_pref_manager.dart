@@ -17,5 +17,17 @@ class SharedPrefManager {
       await prefs.setStringList("favoriteList", [url]);
     }
   }
-
+  
+  // this will check is fav.list contains or not
+  Future<bool> isFavorite(url) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final myFavList = prefs.getStringList("favoriteList");
+    if (myFavList != null) {
+      if (myFavList.contains(url))
+        return true;
+      else
+        return false;
+    } else
+      return false;
+  }
 }
