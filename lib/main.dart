@@ -60,6 +60,7 @@ class _MyAppState extends State<MyApp> {
                 body: PageView(
                   physics: const BouncingScrollPhysics(),
                   controller: controller,
+                  // This is called when page change occurs. It takes up a method of type void function(int index)
                   onPageChanged: (index) {
                     pageState.changePage(index);
                   },
