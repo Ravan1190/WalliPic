@@ -46,15 +46,25 @@ class _MyAppState extends State<MyApp> {
                     pageState.changePage(0);
                     controller.jumpTo(0);
                     return false;
-                  } else
+                  } else {
                     return true;
+                  }
                 },
               child: Scaffold(
                 body: PageView(
-
+                  physics: const BouncingScrollPhysics(),
+                  children: pages,
+                  controller: controller,
+                  onPageChanged: (index) {
+                    pageState.changePage(index);
+                  },
                 ),
+                bottomNavigationBar: BottomNavBar(pageController: controller),
               ),
             ),
+            themeMode: themeState.currentThemeMode,
+            theme: themeState.getLightTheme(),
+            darkTheme: themeState.getDarkTheme(),
           );
       },
     );
