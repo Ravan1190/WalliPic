@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:walli_pic/utils/shared_pref_manager.dart';
 
 class ThemeState extends ChangeNotifier {
   int currentThemeIndex = 0;
@@ -10,9 +11,9 @@ class ThemeState extends ChangeNotifier {
   ];
 
   void getTheme() async {
-    currentThemeIndex = await PrefManager().getThemeIndex();
+    currentThemeIndex = await SharedPrefManager().getThemeIndex();
     currentThemeMode = _themeModes[currentThemeIndex];
-    currentAccentIndex = await PrefManager().getAccentIndex();
+    currentAccentIndex = await SharedPrefManager().getAccentIndex();
     currentAccent = accentColors[currentAccentIndex];
     notifyListeners();
   }
@@ -22,7 +23,7 @@ class ThemeState extends ChangeNotifier {
     currentThemeMode = _themeModes[index];
     currentThemeIndex = index;
     notifyListeners();
-    PrefManager().saveThemeIndex(index);
+    SharedPrefManager().saveThemeIndex(index);
   }
 
   // change to dark
@@ -66,7 +67,7 @@ class ThemeState extends ChangeNotifier {
     currentAccent = accentColors[index];
     currentAccentIndex = index;
     notifyListeners();
-    PrefManager().saveAccentIndex(index);
+    SharedPrefManager().saveAccentIndex(index);
   }
 }
 
